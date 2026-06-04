@@ -1,20 +1,38 @@
 #include <stdio.h>
 
+
+int sumOfDigits(int num);
+
 int main() {
-    int num, reverseNum = 0, remainder;
+    int number, result;
 
     
     printf("Enter an integer: ");
-    scanf("%d", &num);
-
-   
-    while (num != 0) {
-        remainder = num % 10;               
-        reverseNum = reverseNum * 10 + remainder; 
-        num = num / 10;                      
+    if (scanf("%d", &number) != 1) {
+        printf("Invalid input.\n");
+        return 1;
     }
 
-    printf("Reversed number = %d\n", reverseNum);
+    
+    if (number < 0) {
+        number = -number;
+    }
+
+
+    result = sumOfDigits(number);
+
+
+    printf("Sum of digits: %d\n", result);
 
     return 0;
+}
+
+int sumOfDigits(int num) {
+   
+    if (num == 0) {
+        return 0;
+    }
+    
+   
+    return (num % 10) + sumOfDigits(num / 10);
 }
